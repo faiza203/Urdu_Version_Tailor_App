@@ -1,7 +1,9 @@
-export function SignUp() {
+import { SignUpFun } from './../Functions';
+
+export function SignUp() {    
     return (
         <div className="main">
-            <form className="form">
+            <form className="form" onSubmit={SignUpFun}>
                 <h2>رجسٹریشن</h2>
                 <label>: ای میل  </label>
                 <input type="email" placeholder="یہاں ای میل لکھیں" required />
