@@ -5,7 +5,7 @@ type stateType = {
     tailors: any[],
 }
 
-export default function Reducer(state: any = initialState, action: any) {
+export function Reducer(state: any = initialState, action: any) {
     switch (action.type) {
         case "Add_Tailor":
             return {
