@@ -1,6 +1,6 @@
 import { SignUpFun } from './../Functions';
 
-export function SignUp() {    
+export function SignUp() {
     return (
         <div className="main">
             <form className="form" onSubmit={SignUpFun}>
