@@ -1,5 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { history } from '../history';
+import { Customers } from './index'
 
 export function DashBoard() {
     const state = useSelector((state: any) => state);
@@ -16,6 +17,7 @@ export function DashBoard() {
                             <button className="btn btn-outline-secondary d-inline mt-1 w-50">گاہک شامل کریں
             </button>
                         </form>
+                        <Customers />
                     </div>
                     :
                     <div>
