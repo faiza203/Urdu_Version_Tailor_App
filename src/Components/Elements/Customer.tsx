@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import firsbase from 'firebase';
-import { checkCustomer, checkCustomerFirebase } from '../Functions';
+import { checkCustomerFirebase } from '../Functions';
+import { history } from './../history';
 
 export const Customers = (props: any) => {
     const state = useSelector((state: any) => state);
@@ -23,6 +24,8 @@ export const Customers = (props: any) => {
                         <button className="btn btn-outline-danger d-inline m-1" onClick={() => {
                         }}>آرڈر</button>
                         <button className="btn btn-outline-success d-inline m-2 " onClick={() => {
+                            history.push("/Measurment")
+                            history.replace("/Measurment")
                         }}>پیمائش                </button>
                         <h3 className="h3 text-muted d-inline mt-2">{Customer}</h3>
                     </div>
