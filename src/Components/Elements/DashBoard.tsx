@@ -1,9 +1,15 @@
 import { useSelector } from 'react-redux';
 import { history } from '../history';
 import { Customers } from './index'
+import { addCustomerR } from './../Functions';
 
 export function DashBoard() {
     const state = useSelector((state: any) => state);
+    const addCustomer = (e: any) => {
+        e.preventDefault();
+        const customer = e.target[0].value
+        customer.trim() === "" ? alert("Please add a value") : addCustomerR(customer, state.Tailor[1])
+    }
     return (
         <div className="DashBoard">
             {
@@ -12,7 +18,7 @@ export function DashBoard() {
                         <h1 className="h1 font-italic text-muted text-center">
                             {state.Tailor[0]}
                         </h1>
-                        <form className=" text-center">
+                        <form className=" text-center" onSubmit={addCustomer}>
                             <input className="d-inline " type="text" placeholder="یہاں گاہک کا نام لکھیں" required />
                             <button className="btn btn-outline-secondary d-inline mt-1 w-50">گاہک شامل کریں
             </button>
