@@ -1,6 +1,6 @@
 export const initialState: stateType = {
     Tailor: [],
-    Customers: [],
+    Customers: ["صارف"],
 }
 type stateType = {
     Tailor: any[],
@@ -18,7 +18,7 @@ export function Reducer(state: any = initialState, action: any) {
             console.log(state);
             return {
                 ...state,
-                Customers : state.Customers = (action.customer)
+                Customer: state.Customers.push(action.customer)
             }
         default:
             return state

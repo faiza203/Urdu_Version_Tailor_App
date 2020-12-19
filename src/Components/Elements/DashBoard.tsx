@@ -1,14 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../history';
 import { Customers } from './index'
-import { addCustomerR } from './../Functions';
+import { checkCustomer } from './../Functions';
 
 export function DashBoard() {
     const state = useSelector((state: any) => state);
+    const dispatch = useDispatch();
     const addCustomer = (e: any) => {
         e.preventDefault();
-        const customer = e.target[0].value
-        customer.trim() === "" ? alert("Please add a value") : addCustomerR(customer, state.Tailor[1])
+        const customer = e.target[0].value;
+        customer.trim() === "" ? alert("کسٹمر کا نام لکھیں") : checkCustomer(customer, state, dispatch);
+        e.target[0].value = '';
     }
     return (
         <div className="DashBoard">
