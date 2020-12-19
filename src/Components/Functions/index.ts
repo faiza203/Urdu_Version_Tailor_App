@@ -1,1 +1,1 @@
-export {SignUpFun} from './SignUp';
+export { signInR } from './TailorS';

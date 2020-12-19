@@ -25,6 +25,8 @@ form {
   padding-bottom: 20px;
   position: relative;
   text-align: right;
+  align-items: center;
+  justify-content: center;
 }
 
 div.secMain {

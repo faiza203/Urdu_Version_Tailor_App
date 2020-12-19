@@ -2,6 +2,7 @@ import { Router, Route, Switch } from 'react-router';
 import './App.css';
 import { Home, SignUp, SignIn } from './Components/Elements';
 import { history } from './Components/history';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
