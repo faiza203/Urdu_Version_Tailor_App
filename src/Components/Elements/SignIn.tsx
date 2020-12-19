@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import { useDispatch } from 'react-redux';
 import { signInR } from './../Functions';
+import {history} from './../history';
 
 export function SignIn() {
     const dispatch = useDispatch();
@@ -12,7 +13,8 @@ export function SignIn() {
         auth.signInWithEmailAndPassword(email, password).then((user) => {
             const [userName, id] = [user.user?.email, user.user?.uid]
             dispatch(signInR(userName, id));
-            alert("Yes")
+            history.push('/DashBoard')
+            history.replace('/DashBoard')
         }).catch((err) => alert(err.message))
     }
     return (

@@ -2,8 +2,9 @@ import { useDispatch } from 'react-redux';
 import firebase from 'firebase';
 import { signInR } from './../Functions'
 import { config } from './../firebase';
-config();
+import { history } from './../history';
 
+config();
 export function SignUp() {
     const dispatch = useDispatch();
     const auth = firebase.auth();
@@ -17,9 +18,10 @@ export function SignUp() {
             alert("Your have write email as password")
         } else {
             auth.createUserWithEmailAndPassword(email, password).then((user) => {
-                const [userName , id] = [user.user?.email , user.user?.uid]
-                dispatch(signInR(userName , id));
-                alert("Yes")
+                const [userName, id] = [user.user?.email, user.user?.uid]
+                dispatch(signInR(userName, id));
+                history.push('/DashBoard')
+                history.replace('/DashBoard')
             }).catch((err) => alert(err.message))
         }
     }
