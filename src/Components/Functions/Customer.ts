@@ -4,7 +4,7 @@ export function checkCustomerFirebase(client: any, state: any, dispatch: any) {
     const arr = [];
     if (state.Customers.length > 0) {
         state.Customers.forEach((customer: any) => {
-            if (customer !== client) {
+            if (customer.toUpperCase() !== client.toUpperCase()) {
                 arr.push("yes");
             }
         })
@@ -19,7 +19,7 @@ export const checkCustomer = (client: any, state: any, dispatch: any) => {
     let arr = [];
     if (state.Customers.length > 0) {
         state.Customers.forEach((customer: any) => {
-            if (customer !== client) {
+            if (customer.toUpperCase() !== client.toUpperCase()) {
                 arr.push("yes");
             }
         })
@@ -34,7 +34,7 @@ export const checkCustomer = (client: any, state: any, dispatch: any) => {
 
 
 export function addCustomerR(customer: any, id: any) {
-    const promise = firebase.firestore().collection('Customers').doc(id).collection(customer).doc("Measurment").set({
+    const promise = firebase.firestore().collection('Customers').doc(id).collection("Customer Name").doc(customer).set({
         Id: customer + " " + "Measurment"
     })
     promise.then(() => {

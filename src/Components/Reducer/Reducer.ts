@@ -15,7 +15,6 @@ export function Reducer(state: any = initialState, action: any) {
                 Tailor: state.Tailor = ([action.tailor, action.id])
             }
         case "Add_Customer":
-            console.log(state);
             return {
                 ...state,
                 Customer: state.Customers.push(action.customer)

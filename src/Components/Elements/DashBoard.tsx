@@ -9,7 +9,7 @@ export function DashBoard() {
     const addCustomer = (e: any) => {
         e.preventDefault();
         const customer = e.target[0].value;
-        customer.trim() === "" ? alert("کسٹمر کا نام لکھیں") : checkCustomer(customer, state, dispatch);
+        customer.trim() === "" ? alert("کسٹمر کا نام لکھیں") : checkCustomer(customer.trim(), state, dispatch);
         e.target[0].value = '';
     }
     return (
