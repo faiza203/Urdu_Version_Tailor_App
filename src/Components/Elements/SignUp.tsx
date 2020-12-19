@@ -17,7 +17,9 @@ export function SignUp() {
             alert("Your have write email as password")
         } else {
             auth.createUserWithEmailAndPassword(email, password).then((user) => {
-                dispatch(signInR(user.user?.email))
+                const [userName , id] = [user.user?.email , user.user?.uid]
+                dispatch(signInR(userName , id));
+                alert("Yes")
             }).catch((err) => alert(err.message))
         }
     }

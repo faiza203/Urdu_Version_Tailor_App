@@ -7,6 +7,10 @@ body {
   margin: 0;
 }
 
+.homePage {
+  text-align: center;
+}
+
 .main {
   background-color: #fff;
   border-radius: 5px;
@@ -25,8 +29,6 @@ form {
   padding-bottom: 20px;
   position: relative;
   text-align: right;
-  align-items: center;
-  justify-content: center;
 }
 
 div.secMain {
@@ -76,18 +78,21 @@ ul {
   line-height: 35px;
 }
 
-.EditM{
+.EditM {
   display: flex;
   flex-direction: row;
   margin: 1px;
 }
-.EditM div{
+
+.EditM div {
   margin: 3px;
 }
-.EditM input{
+
+.EditM input {
   color: #777;
   text-align: center;
 }
+
 /* .signOut{
   margin:0;
 } */

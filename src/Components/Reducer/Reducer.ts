@@ -1,8 +1,8 @@
 export const initialState: stateType = {
-    tailors: []
+    Tailor: []
 }
 type stateType = {
-    tailors: any[],
+    Tailor: any[],
 }
 
 export function Reducer(state: any = initialState, action: any) {
@@ -10,7 +10,7 @@ export function Reducer(state: any = initialState, action: any) {
         case "Add_Tailor":
             return {
                 ...state,
-                Tailor: state.tailors[0] = (action.tailor)
+                Tailor: state.Tailor = ([action.tailor, action.id])
             }
         default:
             return state

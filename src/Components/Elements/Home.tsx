@@ -7,7 +7,7 @@ export class Home extends Component {
             <div className='homePage'>
                 <h1 className="h1 font-italic text-muted">خوش آمدید</h1>
                 <div>
-                    <Link className="btn btn-outline-dark" to="/SignUp">سائن اپ</Link>
+                    <Link className="btn btn-outline-dark mr-2" to="/SignUp">سائن اپ</Link>
                     <Link className="btn btn-outline-dark" to="/SignIn">سائن ان</Link>
                 </div>
                 <img height="350" src="https://images-na.ssl-images-amazon.com/images/I/41aTFrD3D9L._SX425_.jpg" alt="" />
