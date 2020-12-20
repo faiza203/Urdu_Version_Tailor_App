@@ -1,10 +1,13 @@
 export const initialState: stateType = {
     Tailor: [],
     Customers: ["صارف"],
+    Client: [],
+
 }
 type stateType = {
     Tailor: any[],
     Customers: any[],
+    Client: any[]
 }
 
 export function Reducer(state: any = initialState, action: any) {
@@ -18,6 +21,16 @@ export function Reducer(state: any = initialState, action: any) {
             return {
                 ...state,
                 Customer: state.Customers.push(action.customer)
+            }
+        case "Add_Client":
+            return {
+                ...state,
+                Customer: state.Client[0] = action.customer
+            }
+        case "Delete_Client":
+            return {
+                ...state,
+                Customer: state.Client = []
             }
         default:
             return state

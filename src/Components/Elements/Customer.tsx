@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import firsbase from 'firebase';
-import { checkCustomerFirebase } from '../Functions';
+import { addClientR, checkCustomerFirebase } from '../Functions';
 import { history } from './../history';
 
 export const Customers = (props: any) => {
@@ -26,6 +26,8 @@ export const Customers = (props: any) => {
                         <button className="btn btn-outline-success d-inline m-2 " onClick={() => {
                             history.push("/Measurment")
                             history.replace("/Measurment")
+                            dispatch(addClientR(Customer))
+                            console.log(state);
                         }}>پیمائش                </button>
                         <h3 className="h3 text-muted d-inline mt-2">{Customer}</h3>
                     </div>
