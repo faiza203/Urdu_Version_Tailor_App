@@ -3,12 +3,14 @@ export const initialState: stateType = {
     Customers: [],
     Client: [],
     Measurment: [],
+    Order: [['Faiza' , 5]],
 }
 type stateType = {
     Tailor: any[],
     Customers: any[],
     Client: any[],
     Measurment: [],
+    Order: any[],
 }
 
 export function Reducer(state: any = initialState, action: any) {

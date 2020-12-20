@@ -22,12 +22,14 @@ export const Customers = (props: any) => {
                         <button className="btn btn-outline-primary d-inline m-1 ml-5" onClick={() => {
                         }}>ڈیلیٹ                        </button>
                         <button className="btn btn-outline-danger d-inline m-1" onClick={() => {
+                            history.push("/Order")
+                            history.replace("/Order")
+                            dispatch(addClientR(Customer))
                         }}>آرڈر</button>
                         <button className="btn btn-outline-success d-inline m-2 " onClick={() => {
                             history.push("/Measurment")
                             history.replace("/Measurment")
                             dispatch(addClientR(Customer))
-                            console.log(state);
                         }}>پیمائش                </button>
                         <h3 className="h3 text-muted d-inline mt-2">{Customer}</h3>
                     </div>
