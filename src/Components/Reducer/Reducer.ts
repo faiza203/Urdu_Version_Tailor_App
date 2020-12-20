@@ -1,14 +1,14 @@
 export const initialState: stateType = {
     Tailor: [],
-    Customers: ["صارف"],
+    Customers: [],
     Client: [],
-    Measurments: [],
+    Measurment: [],
 }
 type stateType = {
     Tailor: any[],
     Customers: any[],
     Client: any[],
-    Measurments: [],
+    Measurment: [],
 }
 
 export function Reducer(state: any = initialState, action: any) {
@@ -33,6 +33,19 @@ export function Reducer(state: any = initialState, action: any) {
                 ...state,
                 Customer: state.Client = []
             }
+        case "Add_Measurment":
+            console.log(state);
+
+            return {
+                ...state,
+                Measurments: state.Measurment.push([action.client, action.measurment]),
+            }
+        case "Update_Measurment":
+            return {
+                ...state,
+                Measurments: state.Measurment[action.index][1] = (action.measurment),
+            }
+
         default:
             return state
     }

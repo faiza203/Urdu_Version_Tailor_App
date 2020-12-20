@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteClientR } from '../Functions';
+import { deleteClientR, checkMeasurment } from '../Functions';
 import { history } from './../history';
 import firebase from 'firebase';
 
@@ -10,14 +10,14 @@ export function Measurment() {
         e.preventDefault();
         const [Length, Width, Neck, Tera, ArmLenght, ShoulderLenght] = e.target;
         const measurment = {
-            لمبائی: Length.value, چوڑائی: Width.value, تیرا: Tera.value, گردن: Neck.value, بازو: ArmLenght.value, کندھا: ShoulderLenght.value,
+            Length: Length.value, Width: Width.value, Tera: Tera.value, Neck: Neck.value, Arm: ArmLenght.value, Shoulder: ShoulderLenght.value,
         }
 
         const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(state.Client[0]).doc("{ OrdersId " + ": " + state.Client[0] + "Orders }").set({
             measurment
         });
         promise.then(() => {
-            alert("Data is updated");
+            checkMeasurment(state.Client[0], measurment, dispatch, state.Measurment)
         })
         promise.catch((err) => {
             alert(err.message)
@@ -45,24 +45,24 @@ export function Measurment() {
                 </div> :
                 <div>
                     <h1 className="h1 font-italic text-muted">
-                        Please login first
-                         </h1>
-                    <button className="btn btn-outline-danger" onClick={
+                        پہلے سائن ان کریں
+                     </h1>
+                    <button className="btn btn-outline-danger mt-1 mr-3" onClick={
                         () => {
                             history.push('/SignIn')
                             history.replace('/SignIn')
                         }
                     }>
-                        Go to Sign In
-                         </button>
-                    <button className="btn btn-outline-success" onClick={
+                        سائن ان
+                     </button>
+                    <button className="btn btn-outline-success mt-1 " onClick={
                         () => {
                             history.push('/SignUp')
                             history.replace('/SignUp')
                         }
                     }>
-                        Go to Sign Up
-                         </button>
+                        سائن اپ
+                     </button>
                 </div>
         }
     </div >
