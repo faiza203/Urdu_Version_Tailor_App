@@ -54,6 +54,16 @@ export function Reducer(state: any = initialState, action: any) {
                 ...state,
                 Measurments: state.Measurment[action.index][1] = (action.measurment),
             }
+        case "Add_Order":
+            return {
+                ...state,
+                Orders: state.Order.push([action.client, action.orders]),
+            }
+        case "Update_Order":
+            return {
+                ...state,
+                Orders: state.Order[action.index][1] = (action.orders),
+            }
 
         default:
             return state

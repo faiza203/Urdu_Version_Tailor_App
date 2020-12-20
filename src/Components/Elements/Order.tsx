@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Condition, AlreadyCondition } from './index';
-import { deleteClientR } from './../Functions';
+import { deleteClientR, checkOrder, addOrder } from './../Functions';
 import { history } from './../history';
 
 export const AddOrder = () => {
@@ -8,11 +8,16 @@ export const AddOrder = () => {
     const dispatch = useDispatch();
     const saveOrder = (e: any) => {
         e.preventDefault();
-        const [stitchInput, UnStitchInput, wrongStithedInput, lostInput, deliveredInput, orderInput] = e.target;
-        const [stitch, UnStitch, wrongStithed, lost, delivered, order] = [stitchInput.value, UnStitchInput.value, wrongStithedInput.value, lostInput.value, deliveredInput.value, orderInput.value];
-          if(order > 0){
-              alert("added")
-          }
+        const [order] = e.target[0].value;
+        if(order > 0){
+            dispatch(addOrder(state.Client[0], order , state.Tailor[0]));
+            console.log(state.Client[0], order , state.Tailor[0]);    
+        }
+        // const [stitchInput, UnStitchInput, wrongStithedInput, lostInput, deliveredInput, orderInput] = e.target;
+        // const [stitch, UnStitch, wrongStithed, lost, delivered, order] = [stitchInput.value, UnStitchInput.value, wrongStithedInput.value, lostInput.value, deliveredInput.value, orderInput.value];
+        // if (order > 0) {
+        //     checkOrder(order, state, dispatch)
+        // }
     }
     return (
         <div className="text-center">
@@ -22,12 +27,12 @@ export const AddOrder = () => {
                         <div className="detail text-right">
                             {state.Order.length > 0 ?
                                 state.Order.map((order: any[], index: number) => {
-                                    if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
-                                        return (
-                                            <div>
-                                                <AlreadyCondition client={index} key={index} />
-                                            </div>
-                                        )
+                                    if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {                 
+                                        // return (
+                                        //     <div>
+                                        //         <AlreadyCondition client={index} key={index} />
+                                        //     </div>
+                                        // )
                                     }
                                 }) :
                                 null
