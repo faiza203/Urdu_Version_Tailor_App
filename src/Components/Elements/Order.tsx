@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
+import { Condition } from './index';
 
 export const AddOrder = () => {
     const state = useSelector((state: any) => state);
     return (<div className="text-right">
         <h1 className="h1 text-muted">آرڈر</h1>
-        <p className="text-muted">:اگر آپ نیا لباس سلائی کرنا چاہتے ہیں تو</p>
+        <p className="text-muted">: اگر آپ نیا لباس سلائی کرنا چاہتے ہیں </p>
         <input className="d-inline" type="number" placeholder="آرڈر شامل کریں" />
         {state.Order.length > 0 ?
             state.Order.map((order: any[], index: number) => {
@@ -15,7 +16,8 @@ export const AddOrder = () => {
                     )
                 }
             }) :
-            console.log(state)
+            null
         }
+        <Condition />
     </div>)
 }
