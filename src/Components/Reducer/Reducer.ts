@@ -2,12 +2,13 @@ export const initialState: stateType = {
     Tailor: [],
     Customers: ["صارف"],
     Client: [],
-
+    Measurments: [],
 }
 type stateType = {
     Tailor: any[],
     Customers: any[],
-    Client: any[]
+    Client: any[],
+    Measurments: [],
 }
 
 export function Reducer(state: any = initialState, action: any) {
