@@ -13,7 +13,7 @@ export function Measurment() {
             Length: Length.value, Width: Width.value, Tera: Tera.value, Neck: Neck.value, Arm: ArmLenght.value, Shoulder: ShoulderLenght.value,
         }
 
-        const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(state.Client[0]).doc("{ OrdersId " + ": " + state.Client[0] + "Orders }").set({
+        const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(state.Client[0] + " Measurment").doc("{ OrdersId " + ": " + state.Client[0] + " Orders }").set({
             measurment
         });
         promise.then(() => {
