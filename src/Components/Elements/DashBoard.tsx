@@ -1,11 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../history';
 import { Customers } from './index'
-import { checkCustomer } from './../Functions';
+import { checkCustomer, checkFirebaseMeasurment } from './../Functions';
+import firebase from 'firebase';
 
 export function DashBoard() {
     const state = useSelector((state: any) => state);
     const dispatch = useDispatch();
+    state.Customers.forEach((customer: any) => {
+        firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(customer).get()
+            .then((information) => {
+                information.docs.forEach((doc) => {
+                    const measurment = doc.data().measurment;
+                    checkFirebaseMeasurment(customer, measurment, dispatch, state.Measurment)
+                });
+            })
+    })
     const addCustomer = (e: any) => {
         e.preventDefault();
         const customer = e.target[0].value;
