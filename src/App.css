@@ -93,10 +93,12 @@ ul {
   text-align: center;
 }
 
-/* .signOut{
-  margin:0;
-} */
-
 .DashBoard{
   text-align: right;
+}
+
+.detail{
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
 }
