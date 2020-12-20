@@ -6,23 +6,20 @@ export function Measurment() {
     return (<div>
         {
             state.Tailor[0] ?
-                <div className="measurment">
-                    <h1 className="h1 text-muted">Measurment</h1>
+                <div className="measurment text-center">
+                    <h1 className="h1 text-muted">پیمائش</h1>
                     <form className="mr-5 ">
                         <div className="EditM"></div>
-                        <input className="form-control" type="number" placeholder="Length" required />
-                        <input className="form-control mt-1" type="number" placeholder="Width" required />
-                        <input className="form-control mt-1" type="number" placeholder="Neck" required />
+                        <input className="form-control" type="number" placeholder="لمبائی" required />
+                        <input className="form-control mt-1" type="number" placeholder="چوڑائی" required />
+                        <input className="form-control mt-1" type="number" placeholder="گردن" required />
                         <div className="EditM"></div>
-                        <input className="form-control mt-1" type="number" placeholder="Waist" required />
-                        <input className="form-control mt-1" type="number" placeholder="Bust" required />
-                        <input className="form-control mt-1" type="number" placeholder="Arm Width" required />
+                        <input className="form-control mt-1" type="number" placeholder="تیرا" required />
+                        <input className="form-control mt-1" type="number" placeholder="کندھا" required />
+                        <input className="form-control mt-1" type="number" placeholder="بازو" required />
                         <div className="EditM"></div>
-                        <input className="form-control mt-1" type="number" placeholder="Waist" required />
-                        <input className="form-control mt-1" type="number" placeholder="Chest" required />
-                        <input className="form-control mt-1" type="number" placeholder="Shoulder Width" required />
-                        <button className="btn btn-outline-success d-inline w-25" type="submit">Add</button>
-                        <button className="btn btn-outline-danger d-inline w-50" type="button" onClick={() => { history.push("/DashBoard"); history.replace('/DashBoard') }}>Cancle</button>
+                        <button className="btn btn-outline-danger d-inline w-50 mr-3" type="button" onClick={() => { history.push("/DashBoard"); history.replace('/DashBoard') }}>منسوخ</button>
+                        <button className="btn btn-outline-success d-inline w-25 mr-3 " type="submit">جمع</button>
                     </form>
                 </div> :
                 <div>
