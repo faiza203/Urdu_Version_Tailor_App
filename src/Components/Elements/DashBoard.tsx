@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../history';
 import { Customers } from './index'
-import { checkCustomer, checkFirebaseMeasurment } from './../Functions';
+import { checkCustomer, checkFirebaseMeasurment, checkOrderFirebase } from './../Functions';
 import firebase from 'firebase';
 
 export function DashBoard() {
@@ -14,6 +14,14 @@ export function DashBoard() {
                     const measurment = doc.data().measurment;
                     checkFirebaseMeasurment(customer, measurment, dispatch, state.Measurment)
                 });
+            })
+        firebase.firestore().collection('Orders').doc(state.Tailor[0]).collection(customer + " Orders").get()
+            .then((information) => {
+                information.docs.forEach((doc) => {
+                    const order = doc.data().Orders
+                    checkOrderFirebase(customer, order, state, dispatch)
+                });
+
             })
     })
     const addCustomer = (e: any) => {

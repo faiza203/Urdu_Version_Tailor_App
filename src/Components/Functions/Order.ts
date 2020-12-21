@@ -1,26 +1,26 @@
 import firebase from 'firebase';
 
-export function checkOrderFirebase(orders: string, state: any, dispatch: any) {
+export function checkOrderFirebase(client: any, orders: string, state: any, dispatch: any) {
     const arr = [];
     if (state.Order.length > 0) {
         state.Order.forEach((customer: any) => {
-            if (state.Client[0] !== undefined) {
-                if (customer[0] !== state.Client[0]) {
+            if (client !== undefined) {
+                if (customer[0] !== client) {
                     arr.push("yes");
                 }
             }
         })
     }
     if (arr.length === state.Order.length) {
-        checkOrder(orders, state, dispatch,)
+        checkOrder(client, orders, state, dispatch,)
     }
 }
 
-export function checkOrder(orders: string, state: any, dispatch: any) {
+export function checkOrder(client: any, orders: string, state: any, dispatch: any) {
     const arr = [];
     if (state.Order.length > 0) {
         state.Order.forEach((customer: any, index: number) => {
-            if (customer[0] === state.Client[0]) {
+            if (customer[0].toUpperCase() === client.toUpperCase()) {
                 const order: number = parseInt(customer[1]) + parseInt(orders);
                 dispatch(updateOrder(state.Client[0], index, order, state.Tailor[0]));
             } else {
@@ -28,16 +28,16 @@ export function checkOrder(orders: string, state: any, dispatch: any) {
             }
         })
         if (arr.length === state.Order.length) {
-            dispatch(addOrder(state.Client[0], orders, state.Tailor[0]));
+            dispatch(addOrder(client, orders, state.Tailor[0]));
         }
     }
     if (state.Order.length === 0) {
-        dispatch(addOrder(state.Client[0], orders, state.Tailor[0]));
+        dispatch(addOrder(client, orders, state.Tailor[0]));
     }
 }
 export function addOrder(client: any, orders: string, tailor: string) {
-    firebase.firestore().collection('Orders').doc(tailor).collection(client).doc(orders).set({
-        ConditionId: client + parseInt(orders)
+    firebase.firestore().collection('Orders').doc(tailor).collection(client).doc(`{ConditionId: ${client} Orders`).set({
+        Orders: parseInt(orders)
     }).then().catch();
     const order = parseInt(orders);
     return {
@@ -47,14 +47,13 @@ export function addOrder(client: any, orders: string, tailor: string) {
     }
 }
 export function updateOrder(client: any, index: any, orders: any, tailor: any) {
-    firebase.firestore().collection('Orders').doc(tailor).collection(client).doc(orders).set({
-        ConditionId: client + " Orders"
+    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ConditionId: ${client} Orders}`).set({
+        Orders: parseInt(orders)
     }).then().catch();
     return {
         type: "Update_Order",
         orders,
-        index,
-        client
+        index
     }
 }
 

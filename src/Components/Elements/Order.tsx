@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Condition, AlreadyCondition } from './index';
-import { deleteClientR, checkOrder, addOrder } from './../Functions';
+import { deleteClientR, checkOrder } from './../Functions';
 import { history } from './../history';
 
 export const AddOrder = () => {
@@ -8,16 +8,12 @@ export const AddOrder = () => {
     const dispatch = useDispatch();
     const saveOrder = (e: any) => {
         e.preventDefault();
-        const [order] = e.target[0].value;
-        if(order > 0){
-            dispatch(addOrder(state.Client[0], order , state.Tailor[0]));
-            console.log(state.Client[0], order , state.Tailor[0]);    
+        const [order] = e.target;
+        // const order = e.target[0].value;
+        if (order.value > 0) {
+            checkOrder(state.Client[0], order.value, state, dispatch);
         }
-        // const [stitchInput, UnStitchInput, wrongStithedInput, lostInput, deliveredInput, orderInput] = e.target;
-        // const [stitch, UnStitch, wrongStithed, lost, delivered, order] = [stitchInput.value, UnStitchInput.value, wrongStithedInput.value, lostInput.value, deliveredInput.value, orderInput.value];
-        // if (order > 0) {
-        //     checkOrder(order, state, dispatch)
-        // }
+
     }
     return (
         <div className="text-center">
@@ -25,9 +21,27 @@ export const AddOrder = () => {
                 state.Tailor[0] ?
                     <form className="text-center" onSubmit={saveOrder}>
                         <div className="detail text-right">
+                            <div>
+                                <div className=" ml-5">
+                                    <h1 className="h1 text-muted">آرڈر</h1>
+                                    <p className="text-muted">: اگر آپ نیا لباس سلائی کروانا چاہتے ہیں </p>
+                                    <input className="d-inline" type="number" placeholder="آرڈر شامل کریں" />
+                                    {state.Order.length > 0 ?
+                                        state.Order.map((order: any[], index: number) => {
+                                            if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
+                                                return (
+                                                    <h3 key={index} className="text-muted mt-1">
+                                                        پہلے{order[1]} آرڈر موجود ہیں </h3>
+                                                )
+                                            }
+                                        }) :
+                                        null
+                                    }
+                                </div>
+                            </div>
                             {state.Order.length > 0 ?
                                 state.Order.map((order: any[], index: number) => {
-                                    if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {                 
+                                    if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
                                         // return (
                                         //     <div>
                                         //         <AlreadyCondition client={index} key={index} />
@@ -49,24 +63,6 @@ export const AddOrder = () => {
                                 }) :
                                 null
                             }
-                            <div>
-                                <div className=" ml-5">
-                                    <h1 className="h1 text-muted">آرڈر</h1>
-                                    <p className="text-muted">: اگر آپ نیا لباس سلائی کروانا چاہتے ہیں </p>
-                                    <input className="d-inline" type="number" placeholder="آرڈر شامل کریں" />
-                                    {state.Order.length > 0 ?
-                                        state.Order.map((order: any[], index: number) => {
-                                            if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
-                                                return (
-                                                    <h3 key={index} className="text-muted mt-1">
-                                                        پہلے{order[1]} آرڈر موجود ہیں </h3>
-                                                )
-                                            }
-                                        }) :
-                                        null
-                                    }
-                                </div>
-                            </div>
                         </div>
                         <button className="btn btn-outline-success w-25 d-inline"
                             onClick={() => {
@@ -99,6 +95,6 @@ export const AddOrder = () => {
                  </button>
                     </div>
             }
-        </div>
+        </div >
     )
 }

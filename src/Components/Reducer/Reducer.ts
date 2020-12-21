@@ -1,17 +1,10 @@
 export const initialState: stateType = {
-    Tailor: ['fiaz@gmail.com'],
+    Tailor: [],
     Customers: [],
     Client: [],
     Measurment: [],
-    Order: [['Faiza', 5]],
-    Condition: [['Faiza',
-        {
-            Stitch: 5,
-            Delivered: 6,
-            UnStitch: 7,
-            Lost: 8,
-            OutOfOrder: 9,
-        }]]
+    Order: [],
+    Condition: []
 }
 type stateType = {
     Tailor: any[],
@@ -62,9 +55,8 @@ export function Reducer(state: any = initialState, action: any) {
         case "Update_Order":
             return {
                 ...state,
-                Orders: state.Order[action.index][1] = (action.orders),
+                Orders: state.Order[action.index][1] = action.orders,
             }
-
         default:
             return state
     }

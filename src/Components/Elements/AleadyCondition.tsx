@@ -1,12 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import firebase from 'firebase';
 
 export const AlreadyCondition = (props: any) => {
     const state = useSelector((state: any) => state);
     const condition = state.Condition[props.client][1];
-
     return (
-        <div id="condition" className="mt-5 ml-5">
+        <div id="condition" className="ml-5">
             <div>
                 <p>
                     {
