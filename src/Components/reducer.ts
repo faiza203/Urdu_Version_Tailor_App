@@ -57,6 +57,20 @@ export function Reducer(state: any = initialState, action: any) {
                 ...state,
                 Orders: state.Order[action.index][1] = action.orders,
             }
+
+        case "Add_Condition":
+            console.log(state);
+            
+            return {
+                ...state,
+                Conditions: state.Condition.push([action.client, action.condition]),
+            }
+        case "Update_Condition":
+            console.log(state);
+            return {
+                ...state,
+                Conditions: state.Condition[action.index][1] = action.condition,
+            }
         default:
             return state
     }

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Condition, AlreadyCondition } from './index';
-import { deleteClientR, checkOrder } from './../Functions';
+import { deleteClientR, checkOrder, checkCondition } from './../Functions';
 import { history } from './../history';
 
 export const AddOrder = () => {
@@ -8,10 +8,20 @@ export const AddOrder = () => {
     const dispatch = useDispatch();
     const saveOrder = (e: any) => {
         e.preventDefault();
-        const [order] = e.target;
+        const [order, stitch, unStitch, outOfOrder, lost, delivered,] = e.target;
         if (order.value > 0) {
             checkOrder(state.Client[0], order.value, state, dispatch);
             order.value = "";
+        }
+        if (stitch) {
+            const condition = {
+                Stitched: stitch.value > 0 ? stitch.value : 0,
+                UnStitched: unStitch.value > 0 ? unStitch.value : 0,
+                OutOfOrder: outOfOrder.value > 0 ? outOfOrder.value : 0,
+                Lost: lost.value > 0 ? lost.value : 0,
+                Delivered: delivered.value > 0 ? delivered.value : 0,
+            }
+            checkCondition(state.Client[0], condition, dispatch, state.Condition)
         }
     }
     return (

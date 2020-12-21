@@ -8,13 +8,13 @@ export const AlreadyCondition = (props: any) => {
             <div>
                 <p>
                     {
-                        condition.Stitch > 0 ?
+                        condition.Stitched > 0 ?
                             ` پہلے ${condition.Stitch} سوٹ سلائی ہیں ` : null
                     }
                 </p>
                 <p>
                     {
-                        condition.UnStitch > 0 ?
+                        condition.UnStitched > 0 ?
                             ` پہلے ${condition.UnStitch} سوٹ بغیر سلی ہیں `
                             : null
                     }
