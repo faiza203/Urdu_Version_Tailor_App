@@ -1,5 +1,5 @@
 export const initialState: stateType = {
-    Tailor: [],
+    Tailor: ['fiaz@gmail.com'],
     Customers: [],
     Client: [],
     Measurment: [],

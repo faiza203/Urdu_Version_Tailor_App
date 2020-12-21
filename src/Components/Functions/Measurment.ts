@@ -50,5 +50,6 @@ export function updateMeasurmentR(client: any, measurment: measurment, index: nu
 }
 
 type measurment = {
-    Length: any, Width: any, Neck: any, Tera: any, Arm: any, Shoulder: any
+    Length: any, Arm: any, Tera: any, Neck: any, Chest: any, Gaera: any,
+    Shalwar: any, Poncha: any, Moda: any, Kf: any, Pocket: any,
 }

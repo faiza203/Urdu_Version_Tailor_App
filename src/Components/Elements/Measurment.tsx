@@ -8,11 +8,11 @@ export function Measurment() {
     const dispatch = useDispatch();
     const saveMeasurment = (e: any) => {
         e.preventDefault();
-        const [Length, Width, Neck, Tera, ArmLenght, ShoulderLenght] = e.target;
+        const [Length, ArmLenght, Tera, Neck, Chest, gaera, Shalwar, poncha, moda, kf, pocket] = e.target;
         const measurment = {
-            Length: Length.value, Width: Width.value, Tera: Tera.value, Neck: Neck.value, Arm: ArmLenght.value, Shoulder: ShoulderLenght.value,
+            Length: Length.value, Arm: ArmLenght.value, Tera: Tera.value, Neck: Neck.value, Chest: Chest.value, Gaera: gaera.value,
+            Shalwar: Shalwar.value, Poncha: poncha.value, Moda: moda.value, Kf: kf.value, Pocket: pocket.value,
         }
-
         const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(state.Client[0] + " Measurment").doc("{ OrdersId " + ": " + state.Client[0] + " Orders }").set({
             measurment
         });
@@ -30,11 +30,16 @@ export function Measurment() {
                     <h1 className="h1 text-muted">پیمائش</h1>
                     <form className="mr-5" onSubmit={saveMeasurment}>
                         <input className="form-control" type="number" placeholder="لمبائی" required />
-                        <input className="form-control mt-1" type="number" placeholder="چوڑائی" required />
-                        <input className="form-control mt-1" type="number" placeholder="گردن" required />
-                        <input className="form-control mt-1" type="number" placeholder="تیرا" required />
-                        <input className="form-control mt-1" type="number" placeholder="کندھا" required />
                         <input className="form-control mt-1" type="number" placeholder="بازو" required />
+                        <input className="form-control mt-1" type="number" placeholder="تیرا" required />
+                        <input className="form-control mt-1" type="number" placeholder="گلا" required />
+                        <input className="form-control mt-1" type="number" placeholder="سینے" required />
+                        <input className="form-control mt-1" type="number" placeholder="گیرا" required />
+                        <input className="form-control mt-1" type="number" placeholder="شلوار" required />
+                        <input className="form-control mt-1" type="number" placeholder="پونچا" required />
+                        <input className="form-control mt-1" type="number" placeholder="موڈا" required />
+                        <input className="form-control mt-1" type="number" placeholder="کف" required />
+                        <input className="form-control mt-1" type="number" placeholder="پاکٹ" required />
                         <button className="btn btn-outline-danger d-inline w-50 mr-3" type="button" onClick={() => {
                             history.push("/DashBoard");
                             history.replace('/DashBoard');
