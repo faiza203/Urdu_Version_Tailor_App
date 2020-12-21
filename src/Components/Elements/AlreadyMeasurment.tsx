@@ -6,28 +6,6 @@ import { deleteClientR } from './../Functions';
 export function AlreadyMeasurment(props: any) {
     const state = useSelector((state: any) => state);
     const dispatch = useDispatch();
-    const saveMeasurment: any = (e: any) => {
-        e.preventDefault();
-
-        const [Length, Width, Neck, Chest, Waist, Bust, ArmLenght, ShoulderLenght, LegLenght] = e.target;
-        const measurmentEle = {
-            Length: Length.value, Width: Width.value, Chest: Chest.value, Bust: Bust.value, Waist: Waist.value, Neck: Neck.value, ArmLenght: ArmLenght.value, Shoulder: ShoulderLenght.value, LegLenght: LegLenght.value,
-        }
-        firebase.database().ref().on("child_added", snap => {
-            const promise = firebase.firestore().collection('Measurment').doc(state.Tailor[0]).collection("Customers").doc(state.Client[0]).set({
-                measurmentEle
-            });
-            promise.then(() => {
-                history.push("/Measurment");
-                history.replace("/Measurment");
-                dispatch(deleteClientR());
-            })
-            promise.catch((err) => {
-                alert(err.message);
-                dispatch(deleteClientR());
-            })
-        });
-    }
     return (
         <div className="text-left">
             {state.Tailor.length > 0 ?
@@ -50,13 +28,13 @@ export function AlreadyMeasurment(props: any) {
                             <button className="btn btn-outline-danger" onClick={() => {
                                 history.push('/EditMeasurment')
                                 history.replace('/EditMeasurment');
-                            }} >Edit</button>
+                            }} >ترمیم</button>
                             <button className="btn btn-outline-success ml-1" onClick={() => {
                                 history.push('/Dashboard')
                                 history.replace('/Dashboard');
                                 dispatch(deleteClientR());
                             }}
-                            >Cancle</button>
+                            >کینسل</button>
                         </div>)
                     }
                 }) :

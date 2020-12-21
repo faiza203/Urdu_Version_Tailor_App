@@ -1,6 +1,6 @@
 import { Router, Route, Switch } from 'react-router';
 import './App.css';
-import { Home, SignUp, SignIn, DashBoard, AddOrder, Measurment } from './Components/Elements';
+import { Home, SignUp, SignIn, DashBoard, AddOrder, Measurment, EditMeasurment } from './Components/Elements';
 import { history } from './Components/history';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,6 +15,7 @@ function App() {
           <Route path="/DashBoard" component={DashBoard}></Route>
           <Route path="/Measurment" component={Measurment}></Route>
           <Route path="/Order" component={AddOrder}></Route>
+          <Route path="/EditMeasurment" component={EditMeasurment}></Route>
         </Switch>
       </Router>
     </div>

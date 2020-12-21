@@ -88,6 +88,13 @@ ul {
   margin: 3px;
 }
 
+.EditM.last {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5px;
+}
+
+
 .EditM input {
   color: #777;
   text-align: center;
