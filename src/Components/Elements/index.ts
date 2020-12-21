@@ -8,3 +8,4 @@ export { AddOrder } from './Order';
 export { Condition } from './Condition';
 export { AlreadyCondition } from './AleadyCondition';
 export { Measurment } from './Measurment';
+export { AlreadyMeasurment } from './AlreadyMeasurment';

@@ -4,9 +4,7 @@ import { history } from './../history';
 import { deleteClientR } from './../Functions';
 
 export function AlreadyMeasurment(props: any) {
-    const customerState = useSelector((state: any) => state);
-    const tailor: any = customerState.tailors[0];
-    const client: any = customerState.customer[0];
+    const state = useSelector((state: any) => state);
     const dispatch = useDispatch();
     const saveMeasurment: any = (e: any) => {
         e.preventDefault();
@@ -16,7 +14,7 @@ export function AlreadyMeasurment(props: any) {
             Length: Length.value, Width: Width.value, Chest: Chest.value, Bust: Bust.value, Waist: Waist.value, Neck: Neck.value, ArmLenght: ArmLenght.value, Shoulder: ShoulderLenght.value, LegLenght: LegLenght.value,
         }
         firebase.database().ref().on("child_added", snap => {
-            const promise = firebase.firestore().collection('Measurment').doc(tailor).collection("Customers").doc(client).set({
+            const promise = firebase.firestore().collection('Measurment').doc(state.Tailor[0]).collection("Customers").doc(state.Client[0]).set({
                 measurmentEle
             });
             promise.then(() => {
@@ -31,27 +29,29 @@ export function AlreadyMeasurment(props: any) {
         });
     }
     return (
-        <div >
-            {customerState.tailors.length > 0 ?
-                customerState.measurment.map((measurment: any, index: number) => {
-                    if (measurment[0] === client) {
+        <div className="text-left">
+            {state.Tailor.length > 0 ?
+                state.Measurment.map((measurment: any, index: number) => {
+                    if (measurment[0] === state.Client[0]) {
                         return (<div key={index} className="mr-5">
-                            <ul key={index + 10} className="measurment">
-                                <li key={index + 1} className="text-muted"> Length : {measurment[1].Length}</li>
-                                <li key={index + 2} className="text-muted"> Width : {measurment[1].Width}</li>
-                                <li key={index + 3} className="text-muted"> Neck : {measurment[1].Neck}</li>
-                                <li key={index + 4} className="text-muted"> Waist : {measurment[1].Waist}</li>
-                                <li key={index + 5} className="text-muted"> Bust : {measurment[1].Bust}</li>
-                                <li key={index + 6} className="text-muted"> Chest : {measurment[1].Chest}</li>
-                                <li key={index + 7} className="text-muted"> Arm Lenght : {measurment[1].ArmLenght}</li>
-                                <li key={index + 8} className="text-muted"> Shoulder Length : {measurment[1].Shoulder}</li>
-                                <li key={index + 9} className="text-muted"> Leg Lenght : {measurment[1].LegLenght}</li>
+                            <ul key={index + 12} className="measurment">
+                                <li key={index + 1} className="text-muted"> {measurment[1].Length}: لمبائی</li>
+                                <li key={index + 7} className="text-muted"> {measurment[1].Arm} : بازو</li>
+                                <li key={index + 2} className="text-muted"> {measurment[1].Tera}: تیرا</li>
+                                <li key={index + 3} className="text-muted"> {measurment[1].Neck} : گلا</li>
+                                <li key={index + 4} className="text-muted"> {measurment[1].Chest} : سینے</li>
+                                <li key={index + 5} className="text-muted"> {measurment[1].Gaera} : گیرا</li>
+                                <li key={index + 6} className="text-muted"> {measurment[1].Shalwar} : شلوار</li>
+                                <li key={index + 8} className="text-muted"> {measurment[1].Poncha} : پونچا</li>
+                                <li key={index + 9} className="text-muted"> {measurment[1].Moda} : موڈا</li>
+                                <li key={index + 10} className="text-muted"> {measurment[1].Kf} : کف</li>
+                                <li key={index + 11} className="text-muted"> {measurment[1].Pocket} : پاکٹ</li>
                             </ul>
                             <button className="btn btn-outline-danger" onClick={() => {
                                 history.push('/EditMeasurment')
                                 history.replace('/EditMeasurment');
                             }} >Edit</button>
-                            <button className="btn btn-outline-success" onClick={() => {
+                            <button className="btn btn-outline-success ml-1" onClick={() => {
                                 history.push('/Dashboard')
                                 history.replace('/Dashboard');
                                 dispatch(deleteClientR());
