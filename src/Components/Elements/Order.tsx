@@ -51,11 +51,13 @@ export const AddOrder = () => {
                             {state.Order.length > 0 ?
                                 state.Order.map((order: any[], index: number) => {
                                     if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
-                                        // return (
-                                        //     <div>
-                                        //         <AlreadyCondition client={index} key={index} />
-                                        //     </div>
-                                        // )
+                                        console.log(index);
+                                        console.log(state.Condition[0][1]);
+                                        return (
+                                            <div>
+                                                <AlreadyCondition client={0} key={index} />
+                                            </div>
+                                        )
                                     }
                                 }) :
                                 null
