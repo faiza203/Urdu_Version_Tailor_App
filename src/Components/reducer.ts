@@ -59,14 +59,11 @@ export function Reducer(state: any = initialState, action: any) {
             }
 
         case "Add_Condition":
-            console.log(state);
-            
             return {
                 ...state,
                 Conditions: state.Condition.push([action.client, action.condition]),
             }
         case "Update_Condition":
-            console.log(state);
             return {
                 ...state,
                 Conditions: state.Condition[action.index][1] = action.condition,

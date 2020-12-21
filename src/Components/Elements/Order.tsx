@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Condition, AlreadyCondition } from './index';
 import { deleteClientR, checkOrder, checkCondition } from './../Functions';
 import { history } from './../history';
+import firebase from 'firebase';
 
 export const AddOrder = () => {
     const state = useSelector((state: any) => state);
@@ -21,7 +22,9 @@ export const AddOrder = () => {
                 Lost: lost.value > 0 ? lost.value : 0,
                 Delivered: delivered.value > 0 ? delivered.value : 0,
             }
-            checkCondition(state.Client[0], condition, dispatch, state.Condition)
+            checkCondition(state.Client[0], condition, dispatch, state.Condition);
+            firebase.firestore().collection("Conditions").doc(state.Tailor[0]).collection(state.Client[0] + " Condition")
+                .doc("Condition").set({ condition })
         }
     }
     return (
@@ -51,11 +54,9 @@ export const AddOrder = () => {
                             {state.Order.length > 0 ?
                                 state.Order.map((order: any[], index: number) => {
                                     if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
-                                        console.log(index);
-                                        console.log(state.Condition[0][1]);
                                         return (
                                             <div>
-                                                <AlreadyCondition client={0} key={index} />
+                                                <AlreadyCondition key={index} />
                                             </div>
                                         )
                                     }
