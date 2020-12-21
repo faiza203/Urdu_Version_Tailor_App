@@ -27,7 +27,6 @@ export function Measurment() {
         {
             state.Tailor[0] ?
                 <div className="measurment text-center">
-                    <h1 className="h1 text-muted">پیمائش</h1>
                     <form className="mr-5" onSubmit={saveMeasurment}>
                         <input className="form-control" type="number" placeholder="لمبائی" required />
                         <input className="form-control mt-1" type="number" placeholder="بازو" required />
@@ -73,3 +72,5 @@ export function Measurment() {
     </div >
     )
 }
+
+

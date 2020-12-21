@@ -93,12 +93,18 @@ ul {
   text-align: center;
 }
 
-.DashBoard{
+.DashBoard {
   text-align: right;
 }
 
-.detail{
+.detail {
   display: flex;
   flex-direction: row;
   margin-top: 0;
+}
+
+.measurment form {
+  padding-top: 10px !important;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }

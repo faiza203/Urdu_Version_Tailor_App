@@ -36,7 +36,7 @@ export function checkOrder(client: any, orders: string, state: any, dispatch: an
     }
 }
 export function addOrder(client: any, orders: string, tailor: string) {
-    firebase.firestore().collection('Orders').doc(tailor).collection(client).doc(`{ConditionId: ${client} Orders`).set({
+    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ConditionId: ${client} Condition`).set({
         Orders: parseInt(orders)
     }).then().catch();
     const order = parseInt(orders);
@@ -47,7 +47,7 @@ export function addOrder(client: any, orders: string, tailor: string) {
     }
 }
 export function updateOrder(client: any, index: any, orders: any, tailor: any) {
-    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ConditionId: ${client} Orders}`).set({
+    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ConditionId: ${client} Condition}`).set({
         Orders: parseInt(orders)
     }).then().catch();
     return {

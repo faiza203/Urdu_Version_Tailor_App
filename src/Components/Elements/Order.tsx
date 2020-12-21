@@ -9,11 +9,10 @@ export const AddOrder = () => {
     const saveOrder = (e: any) => {
         e.preventDefault();
         const [order] = e.target;
-        // const order = e.target[0].value;
         if (order.value > 0) {
             checkOrder(state.Client[0], order.value, state, dispatch);
+            order.value = "";
         }
-
     }
     return (
         <div className="text-center">
