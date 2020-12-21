@@ -39,8 +39,7 @@ export function EditMeasurment() {
                     alert(err.message);
                     dispatch(deleteClientR());
                 })
-            }
-
+            } 
         });
     }
     return (
