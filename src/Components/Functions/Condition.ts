@@ -20,7 +20,14 @@ export const checkCondition = (client: any, condition: any, dispatch: any, state
         if (stateCondition.length > 0) {
             stateCondition.forEach((customer: any, index: number) => {
                 if (customer[0].toUpperCase() === client.toUpperCase()) {
-                    dispatch(updateConditiontR(condition, index))
+                    const conditionObj = {
+                        Stitched: condition.Stitched > 0 ? condition.Stitched : customer[1].Stitched,
+                        UnStitched: condition.UnStitched > 0 ? condition.UnStitched : customer[1].UnStitched,
+                        OutOfOrder: condition.OutOfOrder > 0 ? condition.OutOfOrder : customer[1].OutOfOrder,
+                        Lost: condition.Lost > 0 ? condition.Lost : customer[1].Lost,
+                        Delivered: condition.Delivered > 0 ? condition.Delivered : customer[1].Delivered,
+                    }
+                    dispatch(updateConditiontR(conditionObj, index));
                 } else {
                     dispatch(addConditionR(client, condition));
                 }

@@ -27,15 +27,23 @@ export function Reducer(state: any = initialState, action: any) {
                 ...state,
                 Customer: state.Customers.push(action.customer)
             }
+        case "Delete_Customer":
+            return {
+                ...state,
+                Customer: state.Customers.splice(action.customerIndex, 1),
+                Measurments: state.Measurment.splice(action.measurmentIndex, 1),
+                Orders: state.Order.splice(action.orderIndex, 1),
+                Conditions: state.Condition.splice(action.conditionIndex, 1),
+            }
         case "Add_Client":
             return {
                 ...state,
-                Customer: state.Client[0] = action.customer
+                Client: state.Client[0] = action.customer
             }
         case "Delete_Client":
             return {
                 ...state,
-                Customer: state.Client = []
+                Client: state.Client = []
             }
         case "Add_Measurment":
             return {

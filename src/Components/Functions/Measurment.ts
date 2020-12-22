@@ -16,16 +16,23 @@ export const checkFirebaseMeasurment = (client: any, measurment: any, dispatch: 
 }
 
 export const checkMeasurment = (client: any, measurment: any, dispatch: any, stateMeasurment: any) => {
+    const arr = [];
     if (client !== undefined) {
         if (stateMeasurment.length > 0) {
             stateMeasurment.forEach((customer: any, index: number) => {
                 if (customer[0] === client) {
                     dispatch(updateMeasurmentR(client, measurment, index))
                 } else {
-                    dispatch(addMeasurmentR(client, measurment));
+                    arr.push("yes");
                 }
             })
-        } else {
+        }
+        if (stateMeasurment.length === 0) {
+            dispatch(addMeasurmentR(client, measurment))
+        }
+    }
+    if (stateMeasurment.length >  0) {
+        if (stateMeasurment.lenght === arr.length) {
             dispatch(addMeasurmentR(client, measurment))
         }
     }

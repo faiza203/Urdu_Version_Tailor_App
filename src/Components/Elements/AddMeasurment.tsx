@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteClientR, checkMeasurment } from '../Functions';
+import { deleteClientR, checkMeasurment, checkFirebaseMeasurment } from '../Functions';
 import { history } from './../history';
 import firebase from 'firebase';
 
@@ -13,11 +13,11 @@ export function AddMeasurment() {
             Length: Length.value, Arm: ArmLenght.value, Tera: Tera.value, Neck: Neck.value, Chest: Chest.value, Gaera: gaera.value,
             Shalwar: Shalwar.value, Poncha: poncha.value, Moda: moda.value, Kf: kf.value, Pocket: pocket.value,
         }
-        const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(state.Client[0] + " Measurment").doc("{ OrdersId " + ": " + state.Client[0] + " Orders }").set({
+        const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(state.Client + " Measurment").doc("{ OrdersId " + ": " + state.Client + " Orders }").set({
             measurment
         });
         promise.then(() => {
-            checkMeasurment(state.Client[0], measurment, dispatch, state.Measurment)
+            checkFirebaseMeasurment(state.Client[0], measurment, dispatch, state.Measurment)
         })
         promise.catch((err) => {
             alert(err.message)

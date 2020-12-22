@@ -9,12 +9,13 @@ export const AddOrder = () => {
     const dispatch = useDispatch();
     const saveOrder = (e: any) => {
         e.preventDefault();
-        const [order, stitch, unStitch, outOfOrder, lost, delivered,] = e.target;
+        const [order] = e.target;
         if (order.value > 0) {
             checkOrder(state.Client[0], order.value, state, dispatch);
             order.value = "";
         }
-        if (stitch) {
+        if (e.target.length > 3) {
+            const [order, stitch, unStitch, outOfOrder, lost, delivered,] = e.target;
             const condition = {
                 Stitched: stitch.value > 0 ? stitch.value : 0,
                 UnStitched: unStitch.value > 0 ? unStitch.value : 0,
@@ -24,7 +25,12 @@ export const AddOrder = () => {
             }
             checkCondition(state.Client[0], condition, dispatch, state.Condition);
             firebase.firestore().collection("Conditions").doc(state.Tailor[0]).collection(state.Client[0] + " Condition")
-                .doc("Condition").set({ condition })
+                .doc("Condition").set({ condition });
+            stitch.value = "";
+            unStitch.value = "";
+            outOfOrder.value = "";
+            lost.value = "";
+            delivered.value = "";
         }
     }
     return (
