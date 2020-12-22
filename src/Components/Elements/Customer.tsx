@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import firsbase from 'firebase';
 import { addClientR, checkCustomerFirebase, deleteClientR, deleteFromFirebase } from '../Functions';
 import { history } from './../history';
+import { deleteCustomer } from '../Functions/Customer';
 
 export const Customers = (props: any) => {
     const state = useSelector((state: any) => state);
@@ -20,7 +21,7 @@ export const Customers = (props: any) => {
                 return (
                     <div className="mt-1  text-left ml-5" key={index}>
                         <button className="btn btn-outline-primary d-inline m-1 ml-5" onClick={() => {
-                            deleteFromFirebase(Customer, dispatch, state);
+                            dispatch(deleteCustomer(Customer, state));
                             dispatch(deleteClientR());
                         }}>ڈیلیٹ                        </button>
                         <button className="btn btn-outline-danger d-inline m-1" onClick={() => {

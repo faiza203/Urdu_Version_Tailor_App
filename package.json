@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.12.10",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/counterpart": "^0.18.1",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
@@ -14,13 +16,16 @@
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
     "bootstrap": "^4.5.3",
+    "counterpart": "^0.18.6",
     "firebase": "^8.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-interpolate-component": "^0.12.0",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-translate-component": "^0.15.1",
     "redux": "^4.0.5",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
@@ -48,5 +53,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "git+https://github.com/faiza203/Urdu_Version_Tailor_App.git",
+  "author": "Fiaza",
+  "license": "MIT",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "bugs": {
+    "url": "https://github.com/faiza203/Urdu_Version_Tailor_App/issues"
+  },
+  "homepage": "https://github.com/faiza203/Urdu_Version_Tailor_App#readme",
+  "devDependencies": {}
 }

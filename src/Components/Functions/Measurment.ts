@@ -20,7 +20,7 @@ export const checkMeasurment = (client: any, measurment: any, dispatch: any, sta
     if (client !== undefined) {
         if (stateMeasurment.length > 0) {
             stateMeasurment.forEach((customer: any, index: number) => {
-                if (customer[0] === client) {
+                if (customer[0].toUpperCase() === client.toUpperCase()) {
                     dispatch(updateMeasurmentR(client, measurment, index))
                 } else {
                     arr.push("yes");

@@ -8,9 +8,10 @@ export function AlreadyMeasurment(props: any) {
     const dispatch = useDispatch();
     return (
         <div className="text-left">
-            {state.Tailor.length > 0 ?
+            {
+            state.Tailor.length > 0 ?
                 state.Measurment.map((measurment: any, index: number) => {
-                    if (measurment[0] === state.Client[0]) {
+                    if (measurment[0] === state.Client) {
                         return (<div key={index} className="mr-5">
                             <ul key={index + 12} className="measurment">
                                 <li key={index + 1} className="text-muted"> {measurment[1].Length}: لمبائی</li>

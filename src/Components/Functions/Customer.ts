@@ -55,6 +55,7 @@ export const deleteCustomer = (client: any, state: any) => {
     state.Customers.forEach((customer: any, index: number) => {
         if (client === customer) {
             customerIndex = index;
+            deleteFromFirebase(client, state)
         }
     })
     state.Measurment.forEach((customer: any[], index: number) => {
@@ -82,18 +83,17 @@ export const deleteCustomer = (client: any, state: any) => {
 
 }
 
-export const deleteFromFirebase = (customer: any, dispatch: any, state: any) => {
+export const deleteFromFirebase = (customer: any, state: any) => {
     const tailor = state.Tailor[0];
     const tailorId = state.Tailor[1];
     firebase.firestore().collection('Customers').doc(tailorId).collection("Customer Name").doc(customer).
         delete();
-    firebase.firestore().collection('Measurments').doc(tailor).collection(customer + " Order").doc(customer).
+    firebase.firestore().collection('Measurments').doc(tailor).collection(customer + " Measurment").doc(`{ OrdersId : ${customer} Orders }`).
         delete();
     firebase.firestore().collection('Orders').doc(tailor).collection(customer + " Condition").doc(customer).
         delete();
     firebase.firestore().collection('Conditions').doc(tailor).collection("Condition").doc(customer).
         delete();
-    dispatch(deleteCustomer(customer, state))
 }
 
 

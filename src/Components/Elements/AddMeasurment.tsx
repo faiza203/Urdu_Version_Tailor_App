@@ -17,7 +17,7 @@ export function AddMeasurment() {
             measurment
         });
         promise.then(() => {
-            checkFirebaseMeasurment(state.Client[0], measurment, dispatch, state.Measurment)
+            checkMeasurment(state.Client, measurment, dispatch, state.Measurment)
         })
         promise.catch((err) => {
             alert(err.message)

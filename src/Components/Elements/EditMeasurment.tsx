@@ -11,7 +11,7 @@ export function EditMeasurment() {
         let PM;
         const [Length, ArmLenght, Tera, Neck, Chest, gaera, Shalwar, poncha, moda, kf, pocket] = e.target;
         state.Measurment.map((measurment: any, index: number) => {
-            if (measurment[0] === state.Client[0]) {
+            if (measurment[0] === state.Client) {
                 PM = measurment[1];
                 const measurmentEle = {
                     Length: Length.value > 0 ? Length.value : PM.Length,
@@ -26,20 +26,18 @@ export function EditMeasurment() {
                     Kf: kf.value > 0 ? kf.value : PM.Kf,
                     Pocket: pocket.value > 0 ? pocket.value : PM.Pocket
                 };
-                const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection("Customer").doc(state.Client[0]).set({
+                const promise = firebase.firestore().collection('Measurments').doc(state.Tailor[0]).collection(state.Client + " Measurment").doc("{ OrdersId " + ": " + state.Client + " Orders }").set({
                     measurmentEle
                 });
                 promise.then(() => {
-                    checkMeasurment(state.Client[0], measurmentEle, dispatch, state.Measurment);
+                    checkMeasurment(state.Client, measurmentEle, dispatch, state.Measurment);
                     history.push("/Measurment");
                     history.replace("/Measurment");
-                    dispatch(deleteClientR());
                 })
                 promise.catch((err) => {
                     alert(err.message);
-                    dispatch(deleteClientR());
                 })
-            } 
+            }
         });
     }
     return (
@@ -47,7 +45,7 @@ export function EditMeasurment() {
             <div>
                 {state.Measurment.length > 0 ?
                     state.Measurment.map((measurment: any, index: number) => {
-                        if (measurment[0] === state.Client[0]) {
+                        if (measurment[0] === state.Client) {
                             return (
                                 <div id="editM" key={index} className="text-center">
                                     <form onSubmit={saveMeasurment} key={index} className="text-center">
