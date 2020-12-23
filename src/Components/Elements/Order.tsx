@@ -11,7 +11,7 @@ export const AddOrder = () => {
         e.preventDefault();
         const [order] = e.target;
         if (order.value > 0) {
-            checkOrder(state.Client[0], order.value, state, dispatch);
+            checkOrder(state.Client, order.value, state, dispatch);
             order.value = "";
         }
         if (e.target.length > 3) {
@@ -23,9 +23,7 @@ export const AddOrder = () => {
                 Lost: lost.value > 0 ? lost.value : 0,
                 Delivered: delivered.value > 0 ? delivered.value : 0,
             }
-            checkCondition(state.Client[0], condition, dispatch, state.Condition);
-            firebase.firestore().collection("Conditions").doc(state.Tailor[0]).collection(state.Client[0] + " Condition")
-                .doc("Condition").set({ condition });
+            checkCondition(state.Tailor[0], state.Client, condition, dispatch, state.Condition);
             stitch.value = "";
             unStitch.value = "";
             outOfOrder.value = "";
@@ -46,7 +44,7 @@ export const AddOrder = () => {
                                     <input className="d-inline" type="number" placeholder="آرڈر شامل کریں" />
                                     {state.Order.length > 0 ?
                                         state.Order.map((order: any[], index: number) => {
-                                            if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
+                                            if (order[0].toUpperCase() === state.Client.toUpperCase()) {
                                                 return (
                                                     <h3 key={index} className="text-muted mt-1">
                                                         پہلے{order[1]} آرڈر موجود ہیں </h3>
@@ -59,7 +57,7 @@ export const AddOrder = () => {
                             </div>
                             {state.Order.length > 0 ?
                                 state.Order.map((order: any[], index: number) => {
-                                    if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
+                                    if (order[0].toUpperCase() === state.Client.toUpperCase()) {
                                         return (
                                             <div>
                                                 <AlreadyCondition key={index} />
@@ -71,7 +69,7 @@ export const AddOrder = () => {
                             }
                             {state.Order.length > 0 ?
                                 state.Order.map((order: any[], index: number) => {
-                                    if (order[0].toUpperCase() === state.Client[0].toUpperCase()) {
+                                    if (order[0].toUpperCase() === state.Client.toUpperCase()) {
                                         return (
                                             <div>
                                                 <Condition key={index} />

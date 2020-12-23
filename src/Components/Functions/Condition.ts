@@ -1,5 +1,6 @@
+import firebase from 'firebase';
 
-export const checkFirebaseCondition = (client: any, condition: any, dispatch: any, stateCondition: any) => {
+export const checkFirebaseCondition = (tailor: any, client: any, condition: any, dispatch: any, stateCondition: any) => {
     const arr = [];
     if (stateCondition.length > 0) {
         stateCondition.forEach((customer: any) => {
@@ -11,11 +12,11 @@ export const checkFirebaseCondition = (client: any, condition: any, dispatch: an
         })
     }
     if (arr.length === stateCondition.length) {
-        checkCondition(client, condition, dispatch, stateCondition)
+        checkCondition(tailor, client, condition, dispatch, stateCondition)
     }
 }
 
-export const checkCondition = (client: any, condition: any, dispatch: any, stateCondition: any) => {
+export const checkCondition = (tailor: any, client: any, condition: any, dispatch: any, stateCondition: any) => {
     if (client !== undefined) {
         if (stateCondition.length > 0) {
             stateCondition.forEach((customer: any, index: number) => {
@@ -27,19 +28,21 @@ export const checkCondition = (client: any, condition: any, dispatch: any, state
                         Lost: condition.Lost > 0 ? condition.Lost : customer[1].Lost,
                         Delivered: condition.Delivered > 0 ? condition.Delivered : customer[1].Delivered,
                     }
-                    dispatch(updateConditiontR(conditionObj, index));
+                    dispatch(updateConditiontR(tailor , client ,conditionObj, index));
                 } else {
-                    dispatch(addConditionR(client, condition));
+                    dispatch(addConditionR(tailor, client, condition));
                 }
             })
         } else {
-            dispatch(addConditionR(client, condition))
+            dispatch(addConditionR(tailor, client, condition))
         }
     }
 }
 
 
-export function addConditionR(client: any, condition: condition) {
+export function addConditionR(tailor: any, client: any, condition: condition) {
+    firebase.firestore().collection("Conditions").doc(tailor).collection(client + " Condition")
+        .doc("Condition").set({ condition });
     return {
         type: "Add_Condition",
         client,
@@ -47,7 +50,9 @@ export function addConditionR(client: any, condition: condition) {
     }
 }
 
-export function updateConditiontR(condition: condition, index: number) {
+export function updateConditiontR(tailor : any , client: any , condition: condition, index: number) {
+    firebase.firestore().collection("Conditions").doc(tailor).collection(client + " Condition")
+        .doc("Condition").set({ condition });
     return {
         type: "Update_Condition",
         index,

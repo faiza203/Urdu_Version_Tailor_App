@@ -22,7 +22,7 @@ export function checkOrder(client: any, orders: string, state: any, dispatch: an
         state.Order.forEach((customer: any, index: number) => {
             if (customer[0].toUpperCase() === client.toUpperCase()) {
                 const order: number = parseInt(customer[1]) + parseInt(orders);
-                dispatch(updateOrder(state.Client[0], index, order, state.Tailor[0]));
+                dispatch(updateOrder(state.Client, index, order, state.Tailor[0]));
             } else {
                 arr.push("yes");
             }
@@ -36,7 +36,7 @@ export function checkOrder(client: any, orders: string, state: any, dispatch: an
     }
 }
 export function addOrder(client: any, orders: string, tailor: string) {
-    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ConditionId: ${client} Condition`).set({
+    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ ConditionId: ${client} Condition }`).set({
         Orders: parseInt(orders)
     }).then().catch();
     const order = parseInt(orders);
@@ -47,7 +47,7 @@ export function addOrder(client: any, orders: string, tailor: string) {
     }
 }
 export function updateOrder(client: any, index: any, orders: any, tailor: any) {
-    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ConditionId: ${client} Condition}`).set({
+    firebase.firestore().collection('Orders').doc(tailor).collection(client + " Orders").doc(`{ ConditionId: ${client} Condition }`).set({
         Orders: parseInt(orders)
     }).then().catch();
     return {

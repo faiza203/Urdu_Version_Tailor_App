@@ -3,8 +3,6 @@ import './App.css';
 import { Home, SignUp, SignIn, DashBoard, AddOrder, Measurment, EditMeasurment } from './Components/Elements';
 import { history } from './Components/history';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import counterpart from 'counterpart';
-import Translate from 'react-translate-component'
 
 function App() {
   return (

@@ -102,7 +102,6 @@ export function EditMeasurment() {
                                             <button className="btn btn-outline-success d-inline m-0 mt-1 w-25" type="submit">ترمیم</button>
                                             <button className="btn btn-outline-danger d-inline m-0 mt-1 ml-3 w-25" onClick={() => {
                                                 history.push("/Measurment"); history.replace('/Measurment')
-                                                dispatch(deleteClientR());
                                             }}>کینسل</button>
                                         </div>
                                     </form>

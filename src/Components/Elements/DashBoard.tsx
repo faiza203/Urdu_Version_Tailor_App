@@ -26,7 +26,7 @@ export function DashBoard() {
             .then((information) => {
                 information.docs.forEach((doc) => {
                     const condition = doc.data().condition;
-                    checkFirebaseCondition(customer, condition, dispatch, state.Condition)
+                    checkFirebaseCondition(state.Tailor[0], customer, condition, dispatch, state.Condition)
                 });
             })
     })

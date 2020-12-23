@@ -53,15 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "main": "index.js",
-  "repository": "git+https://github.com/faiza203/Urdu_Version_Tailor_App.git",
-  "author": "Fiaza",
-  "license": "MIT",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "bugs": {
-    "url": "https://github.com/faiza203/Urdu_Version_Tailor_App/issues"
-  },
-  "homepage": "https://github.com/faiza203/Urdu_Version_Tailor_App#readme",
-  "devDependencies": {}
+  }
 }

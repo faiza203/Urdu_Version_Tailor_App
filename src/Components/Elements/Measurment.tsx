@@ -10,6 +10,8 @@ export function Measurment() {
                     if (measurment[0] === state.Client) {
                         return (<AlreadyMeasurment />)
                     } else { arr.push("yes") }
+                    console.log(state.Client , measurment);
+
                 })
                 : <AddMeasurment />
             }
