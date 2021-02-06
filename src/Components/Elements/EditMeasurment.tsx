@@ -51,10 +51,6 @@ export function EditMeasurment() {
                                     <form onSubmit={saveMeasurment} key={index} className="text-center">
                                         <div className="EditM text-center">
                                             <div>
-                                                <label>کف</label>
-                                                <input className="mt-1" type="number" placeholder={measurment[1].Kf} />
-                                            </div>
-                                            <div>
                                                 <label>لمبائی</label>
                                                 <input className="mt-1" type="number" placeholder={measurment[1].Length} />
                                             </div>
@@ -92,6 +88,10 @@ export function EditMeasurment() {
                                             <div>
                                                 <label>موڈا</label>
                                                 <input className="mt-1" type="number" placeholder={measurment[1].Moda} />
+                                            </div>
+                                            <div>
+                                                <label>کف</label>
+                                                <input className="mt-1" type="number" placeholder={measurment[1].Kf} />
                                             </div>
                                             <div>
                                                 <label>پاکٹ</label>
